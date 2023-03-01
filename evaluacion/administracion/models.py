@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 class Empleado(models.Model):
     foto = models.ImageField(upload_to='foto/%Y/%m/%d')
@@ -11,7 +12,10 @@ class Empleado(models.Model):
     fecha_contratacion = models.DateField()
 
     def __str__(self):
-        return self.nombre_completo
+        return self.nombre
+    
+    def get_absolute_url(self):
+        return reverse_lazy('crear-beneficiario', kwargs={'pk': self.pk})
     
     class Meta:
         verbose_name = 'Empleado'
@@ -23,7 +27,7 @@ class Beneficiario(models.Model):
     FEMENINO = 'F'
     SEXO = [
         (MASCULINO, 'Masculino'),
-        (FEMENINO, 'Femeninp'),
+        (FEMENINO, 'Femenino'),
     ]
 
     PADRE = 'P'
@@ -45,5 +49,12 @@ class Beneficiario(models.Model):
     parentesco = models.CharField(max_length=1, choices=PARENTESCO)
     fecha_nacimiento = models.DateField()
     sexo = models.CharField(max_length=1, choices=SEXO)
+
+    def __str__(self):
+        return self.nombre
+    
+    class Meta:
+        verbose_name = 'Beneficiario'
+        verbose_name_plural = 'Beneficiarios'
 
 

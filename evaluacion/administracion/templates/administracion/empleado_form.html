@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if object %}
+        <title>Editar Empleado</title>
+    {% else %}
+        <title>Crear Empleado</title>
+    {% endif %}
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div class="container">
+        {% if object %}
+            <h1>Editar empleado</h1>
+        {% else %}
+            <h1>Capturar empleado</h1>
+        {% endif %}
+
+            
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            <div class="mb-3">
+                <label for="{{form.foto.id_for_label}}" class="form-label">{{ form.foto.label }}</label>
+                {{ form.foto }}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.nombre.id_for_label}}" class="form-label">{{ form.nombre.label }}</label>
+                {{ form.nombre }}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.apellido_paterno.id_for_label}}" class="form-label">{{ form.apellido_paterno.label }}</label>
+                {{ form.apellido_paterno }}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.apellido_materno.id_for_label}}" class="form-label">{{ form.apellido_materno.label }}</label>
+                {{ form.apellido_materno }}
+            </div>
+
+            <div class="mb-3">
+                <label for="{{form.puesto_trabajo.id_for_label}}" class="form-label">{{ form.puesto_trabajo.label }}</label>
+                {{ form.puesto_trabajo }}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.salario.id_for_label}}" class="form-label">{{ form.salario.label }}</label>
+                {{ form.salario }}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.estatus.id_for_label}}" class="form-label">{{ form.estatus.label }}</label>
+                {{ form.estatus }}
+            </div>
+            <div class="mb-3">
+                <label for="{{form.fecha_contratacion.id_for_label}}" class="form-label">{{ form.fecha_contratacion.label }}</label>
+                {{ form.fecha_contratacion }}
+            </div>
+            <input type="submit" class="btn btn-primary btn-flat" value='Guardar'>
+            <a href="{% url 'lista-empleados'%}" class="btn btn-secondary btn-flat">
+                <i class="fas fa-plus"></i> Regresar 
+            </a>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true
+            });
+        } );
+    </script>
+</body>
+</html>

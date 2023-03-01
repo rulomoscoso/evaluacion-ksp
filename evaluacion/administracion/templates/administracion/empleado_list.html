@@ -39,7 +39,7 @@
                     <tr>
                         <td>{{empleado.pk}}</td>
                         <td><a href="{{ empleado.foto.url }}"><i class="fa-solid fa-eye"></i></a></td>
-                        <td>{{empleado.nombre}} {{empleado.apellido_paterno}} {{apellido_materno}}</td>
+                        <td>{{empleado.nombre}} {{empleado.apellido_paterno}} {{empleado.apellido_materno}}</td>
                         <td>{{empleado.puesto_trabajo}}</td>
                         <td>${{empleado.salario}}</td>
                         <td>{% if empleado.estatus %}<span class="badge text-bg-success">Activo</span>{% else %}<span class="badge text-bg-danger">Inactivo</span>{% endif %}</td>
